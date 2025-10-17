@@ -13,41 +13,44 @@ def test_adds_multiple_tracks_and_lists_them():
     music_library.add(track_2)
     assert music_library.all() == [track_1, track_2]
 
-# """
-# When we add two tracks
-# And we search for a word in the title
-# We get the matching track back
-# """
-# library = MusicLibrary()
-# track_1 = Track("Always The Hard Way", "Terror")
-# track_2 = Track("Higher Place", "Malevolence")
-# library.add(track_1)
-# library.add(track_2)
-# library.search_by_title("Way") # => [track_1]
 
-# """
-# When we add two tracks
-# And we search for a small part of a word in the title
-# We get the matching track back
-# """
-# library = MusicLibrary()
-# track_1 = Track("Always The Hard Way", "Terror")
-# track_2 = Track("Higher Place", "Malevolence")
-# library.add(track_1)
-# library.add(track_2)
-# library.search_by_title("lace") # => [track_2]
+"""
+When we add two tracks
+And we search for a word in the title
+We get the matching track back
+"""
+def test_searches_by_title():
+    music_library = MusicLibrary()
+    track_1 = Track("My Title 1", "My Artist 1") 
+    track_2 = Track("My Title 2", "My Artist 2") 
+    music_library.add(track_1)
+    music_library.add(track_2)
+    assert music_library.search_by_title("My Title 2") == [track_2]
 
-# """
-# When we add two tracks
-# And we search for a word not in any track title
-# We get an empty list back
-# """
-# library = MusicLibrary()
-# track_1 = Track("Always The Hard Way", "Terror")
-# track_2 = Track("Higher Place", "Malevolence")
-# library.add(track_1)
-# library.add(track_2)
-# library.search_by_title("zzz") # => []
+"""
+When we add two tracks
+And we search for a small part of a word in the title
+We get the matching track back
+"""
+music_library = MusicLibrary()
+track_1 = Track("Always The Hard Way", "Terror")
+track_2 = Track("Higher Place", "Malevolence")
+music_library.add(track_1)
+music_library.add(track_2)
+assert music_library.search_by_title("lace")  == [track_2]
+
+"""
+When we add two tracks
+And we search for a word not in any track title
+We get an empty list back
+"""
+def test_initially_searches_return_empty():
+    music_library = MusicLibrary()
+    track_1 = Track("Always The Hard Way", "Terror")
+    track_2 = Track("Higher Place", "Malevolence")
+    music_library.add(track_1)
+    music_library.add(track_2)
+    music_library.search_by_title("zzz") # => []
 
 # """
 # Given a track with a title and artist
