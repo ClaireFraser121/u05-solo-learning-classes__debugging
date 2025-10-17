@@ -10,3 +10,6 @@ class VowelRemover:
                 self.text = self.text[:i] + self.text[i+1:]
             i += 1
         return self.text
+
+remover = VowelRemover("aeiou")
+print(remover.remove_vowels())  # This will print an empty string
